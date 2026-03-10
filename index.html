@@ -1,0 +1,707 @@
+<!--
+ * File: index.html
+ * Description: Fully responsive CoralOrbit landing page using Tailwind CSS with APK download and contact section.
+ * Version: 7.0.0
+-->
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoralOrbit</title>
+    <meta
+        name="description"
+        content="CoralOrbit is a field-ready marine research platform for reef mapping, telemetry, and coral monitoring."
+    />
+
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        /*
+         * File: tailwind_config.js
+         * Description: Tailwind configuration for CoralOrbit landing page.
+         * Version: 7.0.0
+         */
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        coral_blue: '#0ea5e9',
+                        coral_blue_dark: '#2563eb',
+                        coral_navy: '#020617',
+                        coral_navy_soft: '#0f172a',
+                    },
+                    boxShadow: {
+                        glow: '0 18px 60px rgba(14, 165, 233, 0.22)',
+                        softglass: '0 20px 50px rgba(0, 0, 0, 0.28)',
+                        phone: '0 20px 60px rgba(0, 0, 0, 0.45), 0 16px 40px rgba(14, 165, 233, 0.18)',
+                    },
+                    animation: {
+                        scan: 'scanMove 4s linear infinite',
+                        floatcard: 'floatCard 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        scanMove: {
+                            '0%': { transform: 'translateY(-220px)' },
+                            '100%': { transform: 'translateY(460px)' },
+                        },
+                        floatCard: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /*
+         * File: index.html
+         * Description: Minimal supporting styles for Tailwind-based CoralOrbit landing page.
+         * Version: 7.0.0
+         */
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(14, 165, 233, 0.11), transparent 26%),
+                radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.10), transparent 24%),
+                linear-gradient(180deg, #020617 0%, #030712 45%, #020617 100%);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .glass_panel {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 10px 35px rgba(0, 0, 0, 0.20);
+        }
+
+        .nav_shell {
+            background: rgba(2, 6, 23, 0.76);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+        }
+
+        .text_gradient {
+            background: linear-gradient(90deg, #38bdf8, #60a5fa, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .phone_perspective {
+            transform: none;
+        }
+
+        .section_anchor_offset {
+            scroll-margin-top: 120px;
+        }
+
+        @media (min-width: 1024px) {
+            .phone_perspective {
+                transform: perspective(1200px) rotateY(-14deg) rotateX(7deg) rotateZ(-2deg);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-white selection:bg-sky-500/30 selection:text-sky-100">
+    <!-- HEADER -->
+    <header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4 lg:px-6 lg:pt-5">
+        <div class="mx-auto max-w-7xl">
+            <div class="nav_shell rounded-[24px] px-3 py-3 sm:px-4">
+                <div class="flex items-center justify-between gap-3">
+                    <a href="#home" class="flex min-w-0 items-center gap-3">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-lg shadow-sky-500/20">
+                            <img
+                                src="images/logo.png"
+                                alt="CoralOrbit Logo"
+                                class="h-full w-full object-cover"
+                            />
+                        </div>
+
+                        <div class="min-w-0">
+                            <span class="block truncate text-sm font-extrabold tracking-tight text-white sm:text-base">
+                                CoralOrbit
+                            </span>
+                            <span class="block truncate text-[10px] font-medium text-slate-400 sm:text-xs">
+                                Marine Intelligence
+                            </span>
+                        </div>
+                    </a>
+
+                    <nav class="hidden items-center gap-7 text-sm font-medium text-slate-300 md:flex">
+                        <a href="#home" class="transition-colors hover:text-white">Home</a>
+                        <a href="#features" class="transition-colors hover:text-white">Features</a>
+                        <a href="#download" class="transition-colors hover:text-white">Download</a>
+                        <a href="#preview" class="transition-colors hover:text-white">Preview</a>
+                        <a href="#contact" class="transition-colors hover:text-white">Contact</a>
+                    </nav>
+
+                    <div class="flex items-center gap-2">
+                        <a
+                            href="apk/coralorbit.apk"
+                            download="coralorbit.apk"
+                            class="hidden rounded-full bg-white px-5 py-2.5 text-sm font-bold text-slate-950 transition-transform hover:scale-[1.02] sm:inline-flex sm:items-center sm:justify-center"
+                        >
+                            Get App
+                        </a>
+
+                        <button
+                            id="menu_button"
+                            type="button"
+                            aria-label="Open mobile menu"
+                            aria-expanded="false"
+                            class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
+                        >
+                            <i data-lucide="menu" class="h-5 w-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="menu_panel" class="hidden pt-3 md:hidden">
+                    <div class="glass_panel rounded-3xl p-3">
+                        <div class="grid gap-2">
+                            <a href="#home" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/5">Home</a>
+                            <a href="#features" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/5">Features</a>
+                            <a href="#download" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/5">Download</a>
+                            <a href="#preview" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/5">Preview</a>
+                            <a href="#contact" class="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/5">Contact</a>
+                        </div>
+
+                        <a
+                            href="apk/coralorbit.apk"
+                            download="coralorbit.apk"
+                            class="mt-3 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 px-5 py-3.5 text-sm font-bold text-white shadow-glow transition-transform hover:-translate-y-0.5"
+                        >
+                            Install App
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="relative">
+        <!-- HERO -->
+        <section id="home" class="section_anchor_offset min-h-screen px-4 pb-12 pt-[calc(72px+2rem)] sm:px-6 md:pt-[calc(88px+2rem)] lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
+                    <!-- LEFT -->
+                    <div class="text-center lg:text-left">
+                        <div class="glass_panel mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-sky-500/30 px-3 py-1.5 lg:mx-0">
+                            <span class="relative flex h-2 w-2">
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                <span class="relative inline-flex h-2 w-2 rounded-full bg-sky-500"></span>
+                            </span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-sky-400 sm:text-xs">
+                                Mobile Ready
+                            </span>
+                        </div>
+
+                        <h1 class="mb-4 text-4xl font-extrabold leading-[1.03] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+                            Map the Reef.<br />
+                            <span class="text_gradient">Save the Coral.</span>
+                        </h1>
+
+                        <p class="mx-auto mb-7 max-w-2xl text-sm font-medium leading-relaxed text-slate-400 sm:text-base lg:mx-0 lg:text-lg xl:text-xl">
+                            A field-ready DOST-Provincial S&amp;T Center Marinduque research platform for coral mapping, site documentation, and fast telemetry sync built for researchers on the move.
+                        </p>
+
+                        <div id="download" class="section_anchor_offset flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                            <a
+                                href="apk/coralorbit.apk"
+                                download="coralorbit.apk"
+                                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 px-6 py-3.5 font-bold text-white shadow-glow transition-transform hover:-translate-y-0.5 sm:px-7 sm:py-4"
+                            >
+                                <i data-lucide="download" class="h-5 w-5"></i>
+                                Download APK
+                            </a>
+
+<a
+    href="https://youtu.be/nsXajy5PN4s"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="glass_panel inline-flex items-center justify-center gap-3 rounded-2xl px-6 py-3.5 font-bold text-white transition hover:bg-white/5 sm:px-7 sm:py-4"
+>
+    <i data-lucide="play-circle" class="h-5 w-5"></i>
+    Watch Demo
+</a>
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                            <div class="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-slate-300">
+                                <i data-lucide="shield-check" class="h-4 w-4 text-sky-400"></i>
+                                Safe &amp; Verified
+                            </div>
+
+                            <div class="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-slate-300">
+                                <i data-lucide="zap" class="h-4 w-4 text-blue-400"></i>
+                                Lightweight
+                            </div>
+
+                            <div class="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-slate-300">
+                                <i data-lucide="wifi" class="h-4 w-4 text-cyan-400"></i>
+                                Fast Sync
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="relative flex items-center justify-center">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="aspect-square w-[85%] max-w-[420px] rounded-full bg-gradient-to-tr from-sky-500/20 to-blue-600/15 blur-[85px]"></div>
+                        </div>
+
+                        <div class="phone_perspective relative z-10 w-full max-w-[260px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[350px]">
+                            <div class="relative aspect-[10/18] w-full rounded-[30px] bg-gradient-to-b from-slate-950 to-black p-2 shadow-phone sm:rounded-[34px] md:aspect-[10/17.2] md:rounded-[36px]">
+                                <div class="relative h-full overflow-hidden rounded-[24px] border border-white/5 bg-[linear-gradient(160deg,#0f172a_0%,#020617_58%,#07111f_100%)] sm:rounded-[26px] md:rounded-[28px]">
+                                    <div class="absolute left-1/2 top-[10px] z-20 h-6 w-[92px] -translate-x-1/2 rounded-full bg-[#030303]"></div>
+
+                                    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 animate-scan bg-gradient-to-b from-transparent via-sky-500/15 to-transparent"></div>
+
+                                    <div class="relative z-10 flex h-full flex-col px-3.5 pb-3.5 pt-11 sm:px-4 sm:pb-4 sm:pt-12">
+                                        <div class="mb-3 flex items-center justify-between gap-2">
+                                            <div class="flex min-w-0 items-center gap-2">
+                                                <div class="h-2 w-2 shrink-0 rounded-full bg-sky-500 shadow-[0_0_10px_rgba(14,165,233,1)]"></div>
+                                                <span class="truncate text-[10px] font-bold uppercase tracking-[0.15em] text-slate-300 sm:text-xs">
+                                                    Live Telemetry
+                                                </span>
+                                            </div>
+
+                                            <div class="rounded-lg border border-white/5 bg-white/10 px-2 py-1 text-[9px] font-mono text-white backdrop-blur sm:text-[10px]">
+                                                GPS ON
+                                            </div>
+                                        </div>
+
+                                        <div class="glass_panel relative mb-3 overflow-hidden rounded-[20px] border border-sky-500/20 p-3 sm:rounded-[24px] sm:p-4">
+                                            <div
+                                                class="absolute inset-0 opacity-10"
+                                                style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.6) 1px, transparent 0); background-size: 16px 16px;"
+                                            ></div>
+
+                                            <h3 class="mb-1 text-base font-bold text-white sm:text-2xl">DOST</h3>
+                                            <p class="mb-3 text-[11px] text-sky-400 sm:text-sm">Marinduque</p>
+
+                                            <div class="mt-2 flex h-11 items-end gap-1.5 sm:h-14">
+                                                <div class="h-[40%] w-full rounded-t bg-blue-500/20"></div>
+                                                <div class="h-[60%] w-full rounded-t bg-blue-500/35"></div>
+                                                <div class="h-[30%] w-full rounded-t bg-blue-500/50"></div>
+                                                <div class="relative h-[84%] w-full rounded-t bg-sky-500/80">
+                                                    <div class="absolute -top-2 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.95)]"></div>
+                                                </div>
+                                                <div class="h-[50%] w-full rounded-t bg-indigo-500/40"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex-1 space-y-2.5">
+                                            <div class="glass_panel flex items-center gap-3 rounded-2xl p-3">
+                                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-sky-500/30 bg-gradient-to-br from-sky-500/20 to-blue-500/20">
+                                                    <i data-lucide="target" class="h-5 w-5 text-sky-400"></i>
+                                                </div>
+                                                <div class="min-w-0">
+                                                    <p class="truncate text-sm font-bold text-white">Log Bleaching</p>
+                                                    <p class="truncate text-[11px] font-medium text-slate-400">Record reef damage instantly</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="glass_panel flex items-center gap-3 rounded-2xl p-3">
+                                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-indigo-500/20">
+                                                    <i data-lucide="camera" class="h-5 w-5 text-blue-400"></i>
+                                                </div>
+                                                <div class="min-w-0">
+                                                    <p class="truncate text-sm font-bold text-white">Capture Specimen</p>
+                                                    <p class="truncate text-[11px] font-medium text-slate-400">Auto-tag photos with GPS</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="glass_panel flex items-center gap-3 rounded-2xl p-3">
+                                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-gradient-to-br from-indigo-500/20 to-cyan-500/20">
+                                                    <i data-lucide="activity" class="h-5 w-5 text-cyan-400"></i>
+                                                </div>
+                                                <div class="min-w-0">
+                                                    <p class="truncate text-sm font-bold text-white">Telemetry Stream</p>
+                                                    <p class="truncate text-[11px] font-medium text-slate-400">Live environmental metrics</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3 flex items-center justify-between border-t border-white/5 px-2 pt-3">
+                                            <i data-lucide="home" class="h-5 w-5 text-white"></i>
+                                            <i data-lucide="map" class="h-5 w-5 text-slate-500"></i>
+                                            <i data-lucide="settings" class="h-5 w-5 text-slate-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="absolute -right-4 top-[20%] z-20 hidden animate-floatcard rounded-2xl border border-sky-500/25 bg-slate-900/80 p-3 shadow-[0_20px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:flex">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sky-500/18">
+                                    <i data-lucide="check-circle" class="h-5 w-5 text-sky-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Status</p>
+                                    <p class="text-sm font-bold text-white">Sync Optimal</p>
+                                </div>
+                            </div>
+
+                            <div class="absolute -left-5 bottom-[14%] z-20 hidden animate-floatcard rounded-2xl border border-blue-500/25 bg-slate-900/80 p-3 shadow-[0_20px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl md:flex">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/18">
+                                    <i data-lucide="map-pinned" class="h-5 w-5 text-blue-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Mission</p>
+                                    <p class="text-sm font-bold text-white">32 Sites Tracked</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="features" class="section_anchor_offset px-4 pb-20 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="mb-10 text-center">
+                    <p class="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-sky-400">
+                        Core Features
+                    </p>
+                    <h2 class="mb-3 text-3xl font-extrabold text-white sm:text-4xl">
+                        Built for real marine field operations
+                    </h2>
+                    <p class="mx-auto max-w-3xl text-base leading-8 text-slate-400">
+                        CoralOrbit helps teams collect, verify, and review coral monitoring data through a clean and responsive workflow.
+                    </p>
+                </div>
+
+                <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="glass_panel rounded-[28px] p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-400">
+                            <i data-lucide="map"></i>
+                        </div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Reef Mapping</h3>
+                        <p class="text-sm leading-7 text-slate-400">
+                            Plot coral sites with accurate coordinates and organize field observations clearly.
+                        </p>
+                    </article>
+
+                    <article class="glass_panel rounded-[28px] p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
+                            <i data-lucide="cloud"></i>
+                        </div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Fast Sync</h3>
+                        <p class="text-sm leading-7 text-slate-400">
+                            Upload mission data quickly after field work and keep your reports updated.
+                        </p>
+                    </article>
+
+                    <article class="glass_panel rounded-[28px] p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 text-cyan-400">
+                            <i data-lucide="camera"></i>
+                        </div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Photo Evidence</h3>
+                        <p class="text-sm leading-7 text-slate-400">
+                            Attach image documentation for coral health assessment and visual verification.
+                        </p>
+                    </article>
+
+                    <article class="glass_panel rounded-[28px] p-6">
+                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-500/15 text-indigo-400">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Live Insights</h3>
+                        <p class="text-sm leading-7 text-slate-400">
+                            Monitor mission telemetry and important status indicators in one view.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREVIEW -->
+        <section id="preview" class="section_anchor_offset px-4 pb-20 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="glass_panel rounded-[32px] p-6 sm:p-8 lg:p-10">
+                    <div class="mb-8">
+                        <p class="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-sky-400">
+                            App Preview
+                        </p>
+                        <h2 class="mb-3 text-3xl font-extrabold text-white sm:text-4xl">
+                            Simple, focused, and field-ready
+                        </h2>
+                        <p class="max-w-3xl text-base leading-8 text-slate-400">
+                            The interface is designed to stay readable outdoors while keeping essential actions within easy reach.
+                        </p>
+                    </div>
+
+                    <div class="grid gap-4 sm:grid-cols-3">
+                        <div class="rounded-3xl border border-white/10 bg-white/5 p-5 text-center">
+                            <p class="text-3xl font-extrabold text-white">32+</p>
+                            <p class="mt-2 text-sm font-medium text-slate-400">Tracked Sites</p>
+                        </div>
+
+                        <div class="rounded-3xl border border-white/10 bg-white/5 p-5 text-center">
+                            <p class="text-3xl font-extrabold text-white">98%</p>
+                            <p class="mt-2 text-sm font-medium text-slate-400">Sync Reliability</p>
+                        </div>
+
+                        <div class="rounded-3xl border border-white/10 bg-white/5 p-5 text-center">
+                            <p class="text-3xl font-extrabold text-white">24/7</p>
+                            <p class="mt-2 text-sm font-medium text-slate-400">Mission Logging</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section_anchor_offset px-4 pb-20 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div class="glass_panel rounded-[32px] p-6 sm:p-8 lg:p-10">
+                        <p class="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-sky-400">
+                            Contact
+                        </p>
+                        <h2 class="mb-4 text-3xl font-extrabold text-white sm:text-4xl">
+                            Reach out for app access and collaboration
+                        </h2>
+                        <p class="max-w-2xl text-base leading-8 text-slate-400">
+                            Need the latest APK, project details, or research collaboration? You can contact the developer directly through the email below.
+                        </p>
+
+                        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                                <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-400">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <p class="mb-1 text-sm font-semibold text-slate-400">Email</p>
+                                <a
+                                    href="mailto:g.landoyelpie@gmail.com"
+                                    class="break-all text-base font-bold text-white transition hover:text-sky-400"
+                                >
+                                    g.landoyelpie@gmail.com
+                                </a>
+                            </div>
+
+                            <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                                <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
+                                    <i data-lucide="download-cloud"></i>
+                                </div>
+                                <p class="mb-1 text-sm font-semibold text-slate-400">APK Access</p>
+                                <a
+                                    href="apk/coralorbit.apk"
+                                    download="coralorbit.apk"
+                                    class="text-base font-bold text-white transition hover:text-sky-400"
+                                >
+                                    Download coralorbit.apk
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass_panel rounded-[32px] p-6 sm:p-8 lg:p-10">
+                        <div class="mb-6 flex items-center gap-3">
+                            <div class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-sky-500/20">
+                                <img
+                                    src="images/logo.png"
+                                    alt="CoralOrbit Logo"
+                                    class="h-full w-full object-cover"
+                                />
+                            </div>
+                            <div>
+                                <p class="text-lg font-bold text-white">CoralOrbit</p>
+                                <p class="text-sm text-slate-400">Marine field research platform</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/15 text-sky-400">
+                                        <i data-lucide="building-2"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-400">Institution</p>
+                                        <p class="text-base font-bold text-white">DOST-Provincial S&amp;T Center Marinduque</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
+                                        <i data-lucide="user-round"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-400">Developer</p>
+                                        <p class="text-base font-bold text-white">Gene Elpie Landoy</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400">
+                                        <i data-lucide="badge-check"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-400">Availability</p>
+                                        <p class="text-base font-bold text-white">APK download and project inquiries open</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a
+                            href="mailto:g.landoyelpie@.com?subject=CoralOrbit%20Inquiry"
+                            class="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 px-6 py-4 text-sm font-bold text-white shadow-glow transition-transform hover:-translate-y-0.5"
+                        >
+                            <i data-lucide="send"></i>
+                            Send Email Inquiry
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-white/10 bg-slate-950/50 backdrop-blur-2xl">
+            <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+                <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                    <div class="flex items-start gap-4 sm:items-center">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-sky-500/20">
+                            <img
+                                src="images/logo.png"
+                                alt="CoralOrbit Logo"
+                                class="h-full w-full object-cover"
+                            />
+                        </div>
+
+                        <div class="min-w-0">
+                            <p class="text-sm font-bold tracking-tight text-white sm:text-base">CoralOrbit</p>
+                            <p class="max-w-md text-xs text-slate-400 sm:text-sm">
+                                Precision reef mapping and telemetry for marine field research.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium text-slate-400">
+                        <a href="#home" class="transition-colors hover:text-sky-400">Home</a>
+                        <a href="#features" class="transition-colors hover:text-sky-400">Features</a>
+                        <a href="#download" class="transition-colors hover:text-sky-400">Download</a>
+                        <a href="#preview" class="transition-colors hover:text-sky-400">Preview</a>
+                        <a href="#contact" class="transition-colors hover:text-sky-400">Contact</a>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex flex-col gap-3 border-t border-white/5 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                    <p class="text-xs text-slate-500">
+                        © 2026 CoralOrbit. Built for DOST-Provincial S&amp;T Center Marinduque.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 sm:gap-4">
+                        <span class="inline-flex items-center gap-2">
+                            <span class="h-2 w-2 rounded-full bg-sky-400"></span>
+                            All systems online
+                        </span>
+                        <span class="hidden text-slate-700 sm:inline">•</span>
+                        <span>Developed by: Gene Elpie Landoy</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        /*
+         * File: page_scripts.js
+         * Description: CoralOrbit responsive menu and icon behavior.
+         * Version: 7.0.0
+         */
+
+        const initialize_icons = () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        };
+
+        const close_mobile_menu = (menu_panel, menu_button) => {
+            menu_panel.classList.add('hidden');
+            update_button_icon(menu_button, false);
+        };
+
+        const update_button_icon = (menu_button, is_open) => {
+            const icon_element = menu_button.querySelector('i');
+
+            if (!icon_element) {
+                return;
+            }
+
+            icon_element.setAttribute('data-lucide', is_open ? 'x' : 'menu');
+            menu_button.setAttribute('aria-expanded', String(is_open));
+            initialize_icons();
+        };
+
+        const initialize_mobile_menu = () => {
+            const menu_button = document.getElementById('menu_button');
+            const menu_panel = document.getElementById('menu_panel');
+
+            if (!menu_button || !menu_panel) {
+                return;
+            }
+
+            menu_button.addEventListener('click', () => {
+                const is_hidden = menu_panel.classList.toggle('hidden');
+                update_button_icon(menu_button, !is_hidden);
+            });
+
+            const mobile_links = menu_panel.querySelectorAll('a');
+            mobile_links.forEach((link_element) => {
+                link_element.addEventListener('click', () => {
+                    close_mobile_menu(menu_panel, menu_button);
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    close_mobile_menu(menu_panel, menu_button);
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initialize_icons();
+            initialize_mobile_menu();
+        });
+    </script>
+</body>
+</html>
