@@ -1,7 +1,7 @@
 <!--
  * File: index.html
- * Description: Fully responsive CoralOrbit landing page using Tailwind CSS with APK download and contact section.
- * Version: 7.0.0
+ * Description: Fully responsive CoralOrbit landing page with inline SVG icons and mobile menu support.
+ * Version: 9.0.0
 -->
 
 <!DOCTYPE html>
@@ -26,11 +26,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         /*
-         * File: tailwind_config.js
-         * Description: Tailwind configuration for CoralOrbit landing page.
-         * Version: 7.0.0
+         * File: tailwind_inline_config.js
+         * Description: Tailwind runtime configuration for CoralOrbit landing page.
+         * Version: 9.0.0
          */
-
         tailwind.config = {
             theme: {
                 extend: {
@@ -67,13 +66,11 @@
         };
     </script>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
         /*
-         * File: index.html
-         * Description: Minimal supporting styles for Tailwind-based CoralOrbit landing page.
-         * Version: 7.0.0
+         * File: styles.css
+         * Description: Shared custom styles for the CoralOrbit landing page.
+         * Version: 9.0.0
          */
 
         html,
@@ -123,6 +120,18 @@
 
         .section_anchor_offset {
             scroll-margin-top: 120px;
+        }
+
+        .icon_svg {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
         }
 
         @media (min-width: 1024px) {
@@ -180,7 +189,13 @@
                             aria-expanded="false"
                             class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
                         >
-                            <i data-lucide="menu" class="h-5 w-5"></i>
+                            <span id="menu_icon" class="flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+                                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                                </svg>
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -213,7 +228,6 @@
         <section id="home" class="section_anchor_offset min-h-screen px-4 pb-12 pt-[calc(72px+2rem)] sm:px-6 md:pt-[calc(88px+2rem)] lg:px-8">
             <div class="mx-auto max-w-7xl">
                 <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
-                    <!-- LEFT -->
                     <div class="text-center lg:text-left">
                         <div class="glass_panel mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-sky-500/30 px-3 py-1.5 lg:mx-0">
                             <span class="relative flex h-2 w-2">
@@ -224,55 +238,77 @@
                                 Mobile Ready
                             </span>
                         </div>
+
                         <h1 class="mb-4 text-4xl font-extrabold leading-[1.03] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                             Map the Reef.<br />
                             <span class="text_gradient">Save the Coral.</span>
                         </h1>
+
                         <p class="mx-auto mb-7 max-w-2xl text-sm font-medium leading-relaxed text-slate-400 sm:text-base lg:mx-0 lg:text-lg xl:text-xl">
                             A field-ready DOST-Provincial S&amp;T Center Marinduque research platform for coral mapping, site documentation, and fast telemetry sync built for researchers on the move.
                         </p>
+
                         <div id="download" class="section_anchor_offset flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
                             <a
                                 href="https://drive.google.com/file/d/1qDX0-MKlMMRw50BhmAcofh8SNYIH6ADU/view?usp=sharing"
                                 download="coralorbit.apk"
                                 class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 px-6 py-3.5 font-bold text-white shadow-glow transition-transform hover:-translate-y-0.5 sm:px-7 sm:py-4"
                             >
-                                <i data-lucide="download" class="h-5 w-5"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 15V3"></path>
+                                    <path d="M7 10l5 5 5-5"></path>
+                                    <path d="M5 21h14"></path>
+                                </svg>
                                 Download APK
                             </a>
-<a
-    href="https://youtu.be/nsXajy5PN4s"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="glass_panel inline-flex items-center justify-center gap-3 rounded-2xl px-6 py-3.5 font-bold text-white transition hover:bg-white/5 sm:px-7 sm:py-4"
->
-    <i data-lucide="play-circle" class="h-5 w-5"></i>
-    Watch Demo
-</a>
+
+                            <a
+                                href="https://youtu.be/nsXajy5PN4s"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="glass_panel inline-flex items-center justify-center gap-3 rounded-2xl px-6 py-3.5 font-bold text-white transition hover:bg-white/5 sm:px-7 sm:py-4"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                                </svg>
+                                Watch Demo
+                            </a>
                         </div>
+
                         <div class="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
                             <div class="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-slate-300">
-                                <i data-lucide="shield-check" class="h-4 w-4 text-sky-400"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-4 w-4 text-sky-400" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V6l8-4 8 4z"></path>
+                                    <path d="m9 12 2 2 4-4"></path>
+                                </svg>
                                 Safe &amp; Verified
                             </div>
 
                             <div class="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-slate-300">
-                                <i data-lucide="zap" class="h-4 w-4 text-blue-400"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-4 w-4 text-blue-400" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"></path>
+                                </svg>
                                 Lightweight
                             </div>
 
                             <div class="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-slate-300">
-                                <i data-lucide="wifi" class="h-4 w-4 text-cyan-400"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-4 w-4 text-cyan-400" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 20h.01"></path>
+                                    <path d="M2 8.82a15 15 0 0 1 20 0"></path>
+                                    <path d="M5 12.86a10 10 0 0 1 14 0"></path>
+                                    <path d="M8.5 16.43a5 5 0 0 1 7 0"></path>
+                                </svg>
                                 Fast Sync
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT -->
                     <div class="relative flex items-center justify-center">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="aspect-square w-[85%] max-w-[420px] rounded-full bg-gradient-to-tr from-sky-500/20 to-blue-600/15 blur-[85px]"></div>
                         </div>
+
                         <div class="phone_perspective relative z-10 w-full max-w-[260px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[350px]">
                             <div class="relative aspect-[10/18] w-full rounded-[30px] bg-gradient-to-b from-slate-950 to-black p-2 shadow-phone sm:rounded-[34px] md:aspect-[10/17.2] md:rounded-[36px]">
                                 <div class="relative h-full overflow-hidden rounded-[24px] border border-white/5 bg-[linear-gradient(160deg,#0f172a_0%,#020617_58%,#07111f_100%)] sm:rounded-[26px] md:rounded-[28px]">
@@ -317,7 +353,11 @@
                                         <div class="flex-1 space-y-2.5">
                                             <div class="glass_panel flex items-center gap-3 rounded-2xl p-3">
                                                 <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-sky-500/30 bg-gradient-to-br from-sky-500/20 to-blue-500/20">
-                                                    <i data-lucide="target" class="h-5 w-5 text-sky-400"></i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-sky-400" viewBox="0 0 24 24" aria-hidden="true">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <circle cx="12" cy="12" r="6"></circle>
+                                                        <circle cx="12" cy="12" r="2"></circle>
+                                                    </svg>
                                                 </div>
                                                 <div class="min-w-0">
                                                     <p class="truncate text-sm font-bold text-white">Log Bleaching</p>
@@ -327,7 +367,10 @@
 
                                             <div class="glass_panel flex items-center gap-3 rounded-2xl p-3">
                                                 <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-indigo-500/20">
-                                                    <i data-lucide="camera" class="h-5 w-5 text-blue-400"></i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-blue-400" viewBox="0 0 24 24" aria-hidden="true">
+                                                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                                                        <circle cx="12" cy="13" r="3"></circle>
+                                                    </svg>
                                                 </div>
                                                 <div class="min-w-0">
                                                     <p class="truncate text-sm font-bold text-white">Capture Specimen</p>
@@ -337,7 +380,9 @@
 
                                             <div class="glass_panel flex items-center gap-3 rounded-2xl p-3">
                                                 <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-gradient-to-br from-indigo-500/20 to-cyan-500/20">
-                                                    <i data-lucide="activity" class="h-5 w-5 text-cyan-400"></i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-cyan-400" viewBox="0 0 24 24" aria-hidden="true">
+                                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                                    </svg>
                                                 </div>
                                                 <div class="min-w-0">
                                                     <p class="truncate text-sm font-bold text-white">Telemetry Stream</p>
@@ -347,9 +392,19 @@
                                         </div>
 
                                         <div class="mt-3 flex items-center justify-between border-t border-white/5 px-2 pt-3">
-                                            <i data-lucide="home" class="h-5 w-5 text-white"></i>
-                                            <i data-lucide="map" class="h-5 w-5 text-slate-500"></i>
-                                            <i data-lucide="settings" class="h-5 w-5 text-slate-500"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-white" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M3 9.5 12 3l9 6.5"></path>
+                                                <path d="M5 10v10h14V10"></path>
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-slate-500" viewBox="0 0 24 24" aria-hidden="true">
+                                                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"></polygon>
+                                                <line x1="9" x2="9" y1="3" y2="18"></line>
+                                                <line x1="15" x2="15" y1="6" y2="21"></line>
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-slate-500" viewBox="0 0 24 24" aria-hidden="true">
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .66.26 1.3.73 1.77.47.47 1.11.73 1.77.73H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>
@@ -357,7 +412,10 @@
 
                             <div class="absolute -right-4 top-[20%] z-20 hidden animate-floatcard rounded-2xl border border-sky-500/25 bg-slate-900/80 p-3 shadow-[0_20px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:flex">
                                 <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sky-500/18">
-                                    <i data-lucide="check-circle" class="h-5 w-5 text-sky-400"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-sky-400" viewBox="0 0 24 24" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
                                 </div>
                                 <div class="ml-3">
                                     <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Status</p>
@@ -367,7 +425,10 @@
 
                             <div class="absolute -left-5 bottom-[14%] z-20 hidden animate-floatcard rounded-2xl border border-blue-500/25 bg-slate-900/80 p-3 shadow-[0_20px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl md:flex">
                                 <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/18">
-                                    <i data-lucide="map-pinned" class="h-5 w-5 text-blue-400"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5 text-blue-400" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 22s8-4 8-11a8 8 0 1 0-16 0c0 7 8 11 8 11z"></path>
+                                        <circle cx="12" cy="11" r="3"></circle>
+                                    </svg>
                                 </div>
                                 <div class="ml-3">
                                     <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Mission</p>
@@ -398,7 +459,11 @@
                 <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                     <article class="glass_panel rounded-[28px] p-6">
                         <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-400">
-                            <i data-lucide="map"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"></polygon>
+                                <line x1="9" x2="9" y1="3" y2="18"></line>
+                                <line x1="15" x2="15" y1="6" y2="21"></line>
+                            </svg>
                         </div>
                         <h3 class="mb-2 text-lg font-bold text-white">Reef Mapping</h3>
                         <p class="text-sm leading-7 text-slate-400">
@@ -408,7 +473,9 @@
 
                     <article class="glass_panel rounded-[28px] p-6">
                         <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
-                            <i data-lucide="cloud"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M17.5 19a4.5 4.5 0 1 0-.5-8.97A7 7 0 0 0 3 12.5 4.5 4.5 0 0 0 4.5 21H17"></path>
+                            </svg>
                         </div>
                         <h3 class="mb-2 text-lg font-bold text-white">Fast Sync</h3>
                         <p class="text-sm leading-7 text-slate-400">
@@ -418,7 +485,10 @@
 
                     <article class="glass_panel rounded-[28px] p-6">
                         <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 text-cyan-400">
-                            <i data-lucide="camera"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                                <circle cx="12" cy="13" r="3"></circle>
+                            </svg>
                         </div>
                         <h3 class="mb-2 text-lg font-bold text-white">Photo Evidence</h3>
                         <p class="text-sm leading-7 text-slate-400">
@@ -428,7 +498,12 @@
 
                     <article class="glass_panel rounded-[28px] p-6">
                         <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-500/15 text-indigo-400">
-                            <i data-lucide="bar-chart-3"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M3 3v18h18"></path>
+                                <path d="M18 17V9"></path>
+                                <path d="M13 17V5"></path>
+                                <path d="M8 17v-3"></path>
+                            </svg>
                         </div>
                         <h3 class="mb-2 text-lg font-bold text-white">Live Insights</h3>
                         <p class="text-sm leading-7 text-slate-400">
@@ -476,74 +551,91 @@
         </section>
 
         <!-- CONTACT -->
-<section id="contact" class="section_anchor_offset px-4 pb-20 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-        <div class="glass_panel rounded-[32px] p-6 sm:p-8 lg:p-10">
-            <p class="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-sky-400">
-                Contact
-            </p>
-
-            <h2 class="mb-4 text-3xl font-extrabold text-white sm:text-4xl">
-                Reach out for app access and collaboration
-            </h2>
-
-            <p class="max-w-3xl text-base leading-8 text-slate-400">
-                Need the latest APK, project details, or research collaboration? Contact the developer directly for technical concerns, academic use, project inquiries, and partnership opportunities.
-            </p>
-
-            <div class="mt-8 grid gap-4 md:grid-cols-3">
-                <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-400">
-                        <i data-lucide="mail"></i>
-                    </div>
-                    <p class="mb-1 text-sm font-semibold text-slate-400">Email</p>
-                    <a
-                        href="mailto:g.landoyelpie@gmail.com"
-                        class="break-all text-base font-bold text-white transition hover:text-sky-400"
-                    >
-                        g.landoyelpie@gmail.com
-                    </a>
-                </div>
-
-                <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
-                        <i data-lucide="user-round"></i>
-                    </div>
-                    <p class="mb-1 text-sm font-semibold text-slate-400">Developer</p>
-                    <p class="text-base font-bold text-white">Gene Elpie Landoy</p>
-                </div>
-
-                <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 text-cyan-400">
-                        <i data-lucide="badge-check"></i>
-                    </div>
-                    <p class="mb-1 text-sm font-semibold text-slate-400">Availability</p>
-                    <p class="text-base font-bold text-white">
-                        Open for project inquiries and collaboration
+        <section id="contact" class="section_anchor_offset px-4 pb-20 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="glass_panel rounded-[32px] p-6 sm:p-8 lg:p-10">
+                    <p class="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-sky-400">
+                        Contact
                     </p>
+
+                    <h2 class="mb-4 text-3xl font-extrabold text-white sm:text-4xl">
+                        Connect with the CoralOrbit Team
+                    </h2>
+
+                    <p class="max-w-3xl text-base leading-8 text-slate-400">
+                        For technical inquiries, academic use, implementation details, or collaboration opportunities, you may reach out directly through the contact information below.
+                    </p>
+
+                    <div class="mt-8 grid gap-4 md:grid-cols-3">
+                        <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-10 5L2 7"></path>
+                                </svg>
+                            </div>
+                            <p class="mb-1 text-sm font-semibold text-slate-400">Email Address</p>
+                            <a
+                                href="mailto:g.landoyelpie@gmail.com"
+                                class="break-all text-base font-bold text-white transition hover:text-sky-400"
+                            >
+                                g.landoyelpie@gmail.com
+                            </a>
+                        </div>
+
+                        <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="8" r="5"></circle>
+                                    <path d="M20 21a8 8 0 1 0-16 0"></path>
+                                </svg>
+                            </div>
+                            <p class="mb-1 text-sm font-semibold text-slate-400">Project Lead</p>
+                            <p class="text-base font-bold text-white">Gene Elpie Landoy</p>
+                        </div>
+
+                        <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/15 text-cyan-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M16.3 3.3 18 7l3.7 1.7-1.7 3.7 1.7 3.6-3.7 1.7-1.7 3.7-3.6-1.7-3.7 1.7-1.7-3.7L2.3 16l1.7-3.6-1.7-3.7L6 7l1.7-3.7 3.7 1.7z"></path>
+                                    <path d="m9 12 2 2 4-4"></path>
+                                </svg>
+                            </div>
+                            <p class="mb-1 text-sm font-semibold text-slate-400">Availability</p>
+                            <p class="text-base font-bold text-white">
+                                Open for project discussions 
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                        <a
+                            href="mailto:g.landoyelpie@gmail.com?subject=CoralOrbit%20Inquiry"
+                            class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-500 to-blue-600 px-6 py-4 text-sm font-bold text-white shadow-[0_12px_35px_rgba(14,165,233,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_45px_rgba(14,165,233,0.45)]"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M22 2 11 13"></path>
+                                <path d="M22 2 15 22l-4-9-9-4Z"></path>
+                            </svg>
+                            Send an Email
+                        </a>
+
+                        <a
+                            href="mailto:g.landoyelpie@gmail.com?subject=Partnership%20Inquiry"
+                            class="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-sm font-bold text-white backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-sky-400/40 hover:bg-white/10"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon_svg h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M16 3h3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-5l-4 3v-3H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3"></path>
+                                <path d="M8 7h8"></path>
+                                <path d="M8 11h8"></path>
+                            </svg>
+                            Partnership Inquiry
+                        </a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-8 grid gap-3 sm:grid-cols-2">
-                <a
-                    href="mailto:g.landoyelpie@gmail.com?subject=CoralOrbit%20Inquiry"
-                    class="inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-500 to-blue-600 px-6 py-4 text-sm font-bold text-white shadow-[0_12px_35px_rgba(14,165,233,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_45px_rgba(14,165,233,0.45)]"
-                >
-                    <i data-lucide="send" class="h-5 w-5"></i>
-                    Send an Email
-                </a>
-
-                <a
-                    href="mailto:g.landoyelpie@gmail.com?subject=Collaboration%20Opportunity"
-                    class="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-sm font-bold text-white backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-sky-400/40 hover:bg-white/10"
-                >
-                    <i data-lucide="messages-square" class="h-5 w-5"></i>
-                    Discuss Collaboration
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
         <!-- FOOTER -->
         <footer class="border-t border-white/10 bg-slate-950/50 backdrop-blur-2xl">
             <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
@@ -591,67 +683,5 @@
         </footer>
     </main>
 
-    <script>
-        /*
-         * File: page_scripts.js
-         * Description: CoralOrbit responsive menu and icon behavior.
-         * Version: 7.0.0
-         */
-
-        const initialize_icons = () => {
-            if (window.lucide) {
-                window.lucide.createIcons();
-            }
-        };
-
-        const close_mobile_menu = (menu_panel, menu_button) => {
-            menu_panel.classList.add('hidden');
-            update_button_icon(menu_button, false);
-        };
-
-        const update_button_icon = (menu_button, is_open) => {
-            const icon_element = menu_button.querySelector('i');
-
-            if (!icon_element) {
-                return;
-            }
-
-            icon_element.setAttribute('data-lucide', is_open ? 'x' : 'menu');
-            menu_button.setAttribute('aria-expanded', String(is_open));
-            initialize_icons();
-        };
-
-        const initialize_mobile_menu = () => {
-            const menu_button = document.getElementById('menu_button');
-            const menu_panel = document.getElementById('menu_panel');
-
-            if (!menu_button || !menu_panel) {
-                return;
-            }
-
-            menu_button.addEventListener('click', () => {
-                const is_hidden = menu_panel.classList.toggle('hidden');
-                update_button_icon(menu_button, !is_hidden);
-            });
-
-            const mobile_links = menu_panel.querySelectorAll('a');
-            mobile_links.forEach((link_element) => {
-                link_element.addEventListener('click', () => {
-                    close_mobile_menu(menu_panel, menu_button);
-                });
-            });
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) {
-                    close_mobile_menu(menu_panel, menu_button);
-                }
-            });
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initialize_icons();
-            initialize_mobile_menu();
-        });
-    </script>
 </body>
 </html>
