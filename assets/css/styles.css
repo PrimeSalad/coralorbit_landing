@@ -11,6 +11,7 @@ body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+    height: auto;
 }
 
 body {
@@ -20,6 +21,7 @@ body {
     text-rendering: optimizeLegibility;
     position: relative;
     min-height: 100vh;
+    overflow-y: visible;
 }
 
 /* Noise overlay */
@@ -31,6 +33,8 @@ body {
     z-index: 1;
     opacity: 0.4;
     will-change: transform;
+    height: 100%;
+    width: 100%;
 }
 
 /* Grid overlay */
@@ -44,6 +48,8 @@ body {
     pointer-events: none;
     z-index: 1;
     will-change: transform;
+    height: 100%;
+    width: 100%;
 }
 
 @media (min-width: 640px) {
@@ -440,14 +446,25 @@ body {
 @media (max-width: 639px) {
     /* Fix mobile scrolling */
     html {
-        overflow-y: auto;
+        overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
+        height: auto;
     }
     
     body {
         position: relative;
-        overflow-y: auto;
+        overflow-y: visible;
         overflow-x: hidden;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    /* Ensure overlays don't block scrolling */
+    .noise-overlay,
+    .grid-overlay {
+        position: fixed;
+        pointer-events: none !important;
+        touch-action: none;
     }
     
     /* Reduce transform effects on mobile for better performance */
