@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoralOrbit - Marine Intelligence Platform</title>
-  <meta name="description" content="CoralOrbit is a field-ready marine research platform for reef mapping, telemetry, and coral monitoring." />
+  <title>WayMark.orbit</title>
 
   <link rel="icon" type="image/png" href="images/logo.png" />
   <link rel="apple-touch-icon" href="images/logo.png" />
@@ -23,11 +20,6 @@
             mono: ['JetBrains Mono', 'monospace']
           },
           screens: { 'xs': '475px' },
-          colors: {
-            coral: '#3B82F6',
-            ocean: '#60A5FA',
-            reef: '#93C5FD',
-          },
         },
       },
     };
@@ -37,68 +29,64 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body class="min-h-screen overflow-x-hidden font-syne antialiased">
+<body class="waymark-body min-h-screen overflow-x-hidden font-syne antialiased">
   <div class="noise-overlay" aria-hidden="true"></div>
   <div class="grid-overlay" aria-hidden="true"></div>
 
-  <div class="mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-10 relative z-10">
+  <div class="mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-10">
     
-    <!-- Navigation -->
     <nav class="reveal flex items-center justify-between border-b-4 border-black py-6 sm:py-8 lg:py-10">
-      <a href="#" class="flex min-w-0 items-center gap-3 group" aria-label="CoralOrbit home">
-        <div class="h-12 w-12 shrink-0 bg-coral flex items-center justify-center rotate-45 transition-transform duration-500 group-hover:rotate-[225deg] border-4 border-black sm:h-14 sm:w-14">
-          <img src="images/logo.png" alt="CoralOrbit logo" class="h-7 w-7 object-contain -rotate-45 sm:h-8 sm:w-8 brightness-0 invert" />
+      <a href="#" class="flex min-w-0 items-center gap-3 group" aria-label="WayMark home">
+        <div class="h-12 w-12 shrink-0 bg-black flex items-center justify-center rotate-45 transition-transform duration-500 group-hover:rotate-[225deg] sm:h-14 sm:w-14">
+          <img src="images/logo.png" alt="WayMark logo" class="h-7 w-7 object-contain -rotate-45 sm:h-8 sm:w-8" />
         </div>
         <div class="min-w-0">
           <span class="block truncate text-[1.1rem] font-extrabold leading-none tracking-tight sm:text-[1.3rem]">
-            CORALORBIT
+            WAYMARK
           </span>
           <span class="mt-1 block font-mono text-[0.65rem] uppercase tracking-[0.2em] opacity-60 sm:text-[0.7rem]">
-            Marine Intelligence
+            .orbit/v3
           </span>
         </div>
       </a>
 
       <div class="shrink-0 hidden xs:block">
         <div class="badge-brutalist">
-          <span>FIELD READY</span>
+          <span>OFFICIAL RELEASE</span>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="flex flex-col items-center py-2 text-center sm:py-4 lg:py-6 xl:py-8">
       <div class="reveal mb-6 sm:mb-10" style="transition-delay: 0.05s;">
         <div class="inline-block px-4 py-2 bg-black text-white font-mono text-xs uppercase tracking-wider rotate-[-1deg] sm:text-sm sm:px-6 sm:py-3 md:text-base md:px-8 md:py-4 md:tracking-widest">
-          REEF MAPPING • TELEMETRY • CORAL MONITORING
+          GIA • CEST • SSCP • SETUP
         </div>
       </div>
       
-      <h1 class="reveal hero-title mb-8 max-w-[1000px] text-[clamp(2.5rem,9vw,6rem)] font-extrabold leading-[0.9] tracking-[-0.03em]" style="transition-delay: 0.1s;">
-        Map Reef.<br />Save the <span class="hero-accent">Coral.</span>
+      <h1 class="reveal hero-title mb-8 max-w-[900px] text-[clamp(2.5rem,9vw,6rem)] font-extrabold leading-[0.9] tracking-[-0.03em]" style="transition-delay: 0.1s;">
+        Project<br />tracking,<br /><span class="hero-accent">perfected.</span>
       </h1>
 
       <p class="reveal mb-12 w-full max-w-[580px] px-2 text-[1.05rem] leading-relaxed opacity-75 sm:text-[1.2rem] lg:text-[1.25rem]" style="transition-delay: 0.18s;">
-        A field-ready DOST-Provincial S&T Center Marinduque research platform for coral mapping, site documentation, and fast telemetry sync built for researchers on the move.
+        Track GIA, CEST, SSCP, and SETUP project locations across Boac, Gasan, Buenavista, Torrijos, Mogpog, and Santa Cruz. Monitor progress, manage milestones, and coordinate implementation seamlessly.
       </p>
 
       <div class="reveal flex w-full max-w-[520px] flex-col items-stretch justify-center gap-4 sm:flex-row" style="transition-delay: 0.26s;">
-        <a href="https://drive.google.com/file/d/1qDX0-MKlMMRw50BhmAcofh8SNYIH6ADU/view?usp=sharing" class="btn-primary group">
+        <a href="https://drive.google.com/file/d/1Gm3Lfaf9d8Dv5HB42SL0L8jr9VZNUM7X/view?usp=sharing" class="btn-primary group">
           <i data-lucide="download" class="h-5 w-5 transition-transform group-hover:translate-y-0.5"></i>
           <span class="text-[1rem]">Download</span>
         </a>
 
-        <a href="https://youtu.be/nsXajy5PN4s" target="_blank" rel="noopener noreferrer" class="btn-secondary group">
+        <a href="https://www.youtube.com/watch?v=k6GOHz0osOY" target="_blank" rel="noopener noreferrer" class="btn-secondary group">
           <i data-lucide="play-circle" class="h-5 w-5 transition-transform group-hover:scale-110"></i>
-          <span class="text-[1rem]">Watch</span>
+          <span class="text-[1rem]">Watch Demo</span>
         </a>
       </div>
     </section>
 
-    <!-- Features Section -->
     <section class="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-3 mt-16 sm:mt-20 lg:mt-24">
       
-      <!-- Hero Feature Card -->
       <div class="feature-card-hero reveal lg:col-span-3" style="transition-delay: 0.08s;">
         <div class="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
           <div class="text-center lg:text-left">
@@ -106,31 +94,30 @@
               Native Android<br />Performance
             </h2>
             <p class="mx-auto max-w-[520px] text-[1.05rem] leading-relaxed opacity-75 sm:text-[1.1rem] lg:mx-0 lg:text-[1.15rem]">
-              Built for <span class="font-bold text-coral">DOST Marinduque</span> marine research operations. Track coral sites, log bleaching events, capture specimen photos with GPS tagging, and stream live environmental metrics—all offline-capable with seamless sync when connected.
+              Built for <span class="font-bold text-blue-700">DOST Marinduque</span> operations. Track GIA, CEST, SSCP, and SETUP projects across Boac, Gasan, Buenavista, Torrijos, Mogpog, and Santa Cruz—managing milestones and coordinating implementation with complete visibility.
             </p>
           </div>
           <div class="flex items-center justify-center pt-4 lg:pt-0">
             <div class="phone-mockup" aria-hidden="true">
               <div class="phone-notch"></div>
               <div class="phone-content">
-                <img src="images/phone_1.jpg" alt="CoralOrbit App Screenshot 1" class="phone-screenshot active" />
-                <img src="images/phone_2.jpg" alt="CoralOrbit App Screenshot 2" class="phone-screenshot" />
-                <img src="images/phone_3.jpg" alt="CoralOrbit App Screenshot 3" class="phone-screenshot" />
-                <img src="images/phone_4.jpg" alt="CoralOrbit App Screenshot 4" class="phone-screenshot" />
+                <img src="images/phone_1.jpg" alt="WayMark App Screenshot" class="phone-screenshot active" />
+                <img src="images/phone_2.jpg" alt="WayMark App Screenshot" class="phone-screenshot" />
+                <img src="images/phone_3.jpg" alt="WayMark App Screenshot" class="phone-screenshot" />
+                <img src="images/phone_4.jpg" alt="WayMark App Screenshot" class="phone-screenshot" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Feature Cards -->
       <div class="feature-card reveal" style="transition-delay: 0.16s;">
         <div class="feature-icon">
-          <i data-lucide="map" class="h-6 w-6"></i>
+          <i data-lucide="map-pin" class="h-6 w-6"></i>
         </div>
-        <h3 class="mb-3 text-[1.3rem] font-bold sm:text-[1.4rem]">Reef Mapping</h3>
+        <h3 class="mb-3 text-[1.3rem] font-bold sm:text-[1.4rem]">Location Tracking</h3>
         <p class="text-[1rem] leading-relaxed opacity-75 sm:text-[1.05rem]">
-          Plot coral sites with accurate coordinates and organize field observations clearly for comprehensive reef documentation.
+          Monitor GIA, CEST, SSCP, and SETUP project sites across Boac, Gasan, Buenavista, Torrijos, Mogpog, and Santa Cruz with precise geolocation data.
         </p>
       </div>
 
@@ -138,51 +125,24 @@
         <div class="feature-icon">
           <i data-lucide="activity" class="h-6 w-6"></i>
         </div>
-        <h3 class="mb-3 text-[1.3rem] font-bold sm:text-[1.4rem]">Live Telemetry</h3>
+        <h3 class="mb-3 text-[1.3rem] font-bold sm:text-[1.4rem]">Real-time Updates</h3>
         <p class="text-[1rem] leading-relaxed opacity-75 sm:text-[1.05rem]">
-          Stream real-time environmental metrics and monitor mission telemetry with important status indicators in one view.
+          Instant synchronization of project milestones and progress reports across your team, keeping everyone aligned.
         </p>
       </div>
 
       <div class="feature-card reveal" style="transition-delay: 0.32s;">
         <div class="feature-icon">
-          <i data-lucide="map-pin" class="h-6 w-6"></i>
+          <i data-lucide="shield" class="h-6 w-6"></i>
         </div>
-        <h3 class="mb-3 text-[1.3rem] font-bold sm:text-[1.4rem]">GPS Tagging</h3>
+        <h3 class="mb-3 text-[1.3rem] font-bold sm:text-[1.4rem]">Secure Data</h3>
         <p class="text-[1rem] leading-relaxed opacity-75 sm:text-[1.05rem]">
-          Automatically capture precise coordinates for every coral site entry, enabling accurate location tracking and spatial analysis.
+          All project information, locations, and milestones are protected with military-grade encryption for data integrity.
         </p>
       </div>
 
     </section>
 
-    <!-- Stats Section -->
-    <section class="mt-16 sm:mt-20 lg:mt-24">
-      <div class="feature-card-hero reveal">
-        <div class="text-center mb-8">
-          <h2 class="text-3xl font-extrabold mb-4 sm:text-4xl">Field-Tested Performance</h2>
-          <p class="text-[1.05rem] opacity-75 max-w-2xl mx-auto">
-            Built for real marine field operations with proven reliability and fast sync capabilities.
-          </p>
-        </div>
-        <div class="grid gap-6 sm:grid-cols-3">
-          <div class="text-center p-6 bg-coral/10 border-4 border-black">
-            <p class="text-5xl font-extrabold mb-2">32+</p>
-            <p class="text-[1rem] font-bold opacity-75">Tracked Sites</p>
-          </div>
-          <div class="text-center p-6 bg-reef/20 border-4 border-black">
-            <p class="text-5xl font-extrabold mb-2">98%</p>
-            <p class="text-[1rem] font-bold opacity-75">Sync Reliability</p>
-          </div>
-          <div class="text-center p-6 bg-ocean/10 border-4 border-black">
-            <p class="text-5xl font-extrabold mb-2">24/7</p>
-            <p class="text-[1rem] font-bold opacity-75">Mission Logging</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="reveal mt-16 border-t-4 border-black py-10 sm:mt-20 sm:py-12 lg:mt-28 lg:py-14">
       <div class="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
         <div class="flex flex-col gap-5 sm:flex-row sm:items-center">
@@ -193,7 +153,7 @@
             </div>
           </div>
           <p class="max-w-[340px] text-[0.9rem] leading-relaxed opacity-70">
-            Field-ready marine research platform for coral mapping, site documentation, and fast telemetry sync for DOST Marinduque operations.
+           Tracking GIA, CEST, SSCP, and SETUP projects across Boac, Gasan, Buenavista, Torrijos, Mogpog, and Santa Cruz for streamlined DOST operations.
           </p>
         </div>
 
@@ -209,7 +169,7 @@
 
       <div class="mt-10 border-t-2 border-black/10 pt-8 text-center">
         <p class="font-mono text-[0.7rem] uppercase tracking-[0.25em] opacity-40">
-          © 2026 CoralOrbit • DOST-Provincial S&T Center Marinduque
+          © 2026 WayMark.orbit
         </p>
       </div>
     </footer>
